@@ -1,4 +1,4 @@
-import Transaction from "../models/Transaction";
+import Transaction from "../models/Transaction.js";
 import createError from "../utils/createError.js";
 
 export const getTransactions = async (req, res, next) => {

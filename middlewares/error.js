@@ -1,4 +1,4 @@
-import createError from "../utils/createError";
+import createError from "../utils/createError.js";
 export const notFound = (req, res, next) => {
   return next(createError(404, "Page Not Found"));
 };

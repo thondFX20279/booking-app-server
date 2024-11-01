@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
-import User from "../models/User";
-import { generateToken } from "../utils/token";
-import createError from "../utils/createError";
+import User from "../models/User.js";
+import { generateToken } from "../utils/token.js";
+import createError from "../utils/createError.js";
 export const register = async (req, res, next) => {
   try {
     const { username, password, fullName, phoneNumber, email, isAdmin = false } = req.body;

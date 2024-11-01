@@ -1,17 +1,17 @@
-const express = require("express");
+import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import initialRoutes from "./routes";
+import initialRoutes from "./routes/index.js";
 import cookieParser from "cookie-parser";
 import path from "path";
 dotenv.config();
 const app = express();
 const http = require("http").Server(app);
 global.__basename = __dirname;
-const Port = process.env.PORT || 3001;
+const Port = process.env.PORT || 8080;
 const corsOption = {
-  origin: ["http://localhost:3000", "http://localhost:3001"],
+  origin: [process.env.FONTEND_URL, process.env.ADMIN_URL],
   credentials: true,
 };
 app.use(cors(corsOption));

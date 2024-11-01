@@ -1,9 +1,9 @@
-import { notFound, handleError } from "../middlewares/error";
-import hotels from "./hotel";
-import rooms from "./room";
-import users from "./user";
-import auth from "./auth";
-import transactions from "./transaction";
+import { notFound, handleError } from "../middlewares/error.js";
+import hotels from "./hotel.js";
+import rooms from "./room.js";
+import users from "./user.js";
+import auth from "./auth.js";
+import transactions from "./transaction.js";
 const initialRoutes = (app) => {
   // app.use("/api/auth");
   app.use("/api/hotels", hotels);

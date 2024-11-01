@@ -1,8 +1,7 @@
-import { Router } from "express";
-import * as ctrls from "../controllers";
+import express from "express";
+import * as ctrls from "../controllers/index.js";
 import { body, validationResult } from "express-validator";
-import createError from "../utils/createError";
-const routes = Router();
+const routes = express.Router();
 routes.post(
   "/login",
   [

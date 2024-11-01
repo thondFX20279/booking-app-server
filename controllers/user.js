@@ -1,5 +1,5 @@
-import User from "../models/User";
-import createError from "../utils/createError";
+import User from "../models/User.js";
+import createError from "../utils/createError.js";
 export const getAllUsers = async (req, res, next) => {
   try {
     const users = await User.find().select("-username -password");

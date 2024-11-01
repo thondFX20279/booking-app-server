@@ -1,8 +1,8 @@
-import { Router } from "express";
-import * as ctrls from "../controllers";
-import { verifyAdmin, verifyUser, verifyToken } from "../middlewares/verifyToken";
+import express from "express";
+import * as ctrls from "../controllers/index.js";
+import { verifyAdmin, verifyUser, verifyToken } from "../middlewares/verifyToken.js";
 
-const routes = Router();
+const routes = express.Router();
 routes.get("/", verifyAdmin, ctrls.getAllUsers);
 routes.get("/me", verifyToken, ctrls.getCurrent);
 routes.get("/:userId", verifyUser, ctrls.getUserById);

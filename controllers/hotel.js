@@ -1,6 +1,6 @@
-import Hotel from "../models/Hotel";
-import Transaction from "../models/Transaction";
-import createError from "../utils/createError";
+import Hotel from "../models/Hotel.js";
+import Transaction from "../models/Transaction.js";
+import createError from "../utils/createError.js";
 
 export const getHotels = async (req, res, next) => {
   try {

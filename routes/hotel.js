@@ -1,8 +1,8 @@
-import { Router } from "express";
-import * as ctrls from "../controllers";
-import { verifyAdmin } from "../middlewares/verifyToken";
+import express from "express";
+import * as ctrls from "../controllers/index.js";
+import { verifyAdmin } from "../middlewares/verifyToken.js";
 
-const routes = Router();
+const routes = express.Router();
 routes.get("/", ctrls.getHotels);
 routes.post("/", verifyAdmin, ctrls.createHotel);
 routes.get("/find/:hotelId", ctrls.getHotelById);

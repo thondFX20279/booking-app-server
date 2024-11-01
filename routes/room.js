@@ -1,8 +1,8 @@
-import { Router } from "express";
-import * as ctrls from "../controllers";
-import { verifyAdmin } from "../middlewares/verifyToken";
+import express from "express";
+import * as ctrls from "../controllers/index.js";
+import { verifyAdmin } from "../middlewares/verifyToken.js";
 
-const router = Router();
+const router = express.Router();
 
 router.get("/", ctrls.getAllRooms);
 router.get("/:roomId", ctrls.getRoomById);

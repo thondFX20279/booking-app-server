@@ -1,7 +1,7 @@
-import Room from "../models/Room";
-import createError from "../utils/createError";
-import Hotel from "../models/Hotel";
-import Transaction from "../models/Transaction";
+import Room from "../models/Room.js";
+import createError from "../utils/createError.js";
+import Hotel from "../models/Hotel.js";
+import Transaction from "../models/Transaction.js";
 export const getAllRooms = async (req, res, next) => {
   try {
     const { limit = 8 } = req.query;
