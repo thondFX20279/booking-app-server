@@ -7,7 +7,6 @@ import cookieParser from "cookie-parser";
 import path from "path";
 dotenv.config();
 const app = express();
-const http = require("http").Server(app);
 global.__basename = __dirname;
 const Port = process.env.PORT || 8080;
 const corsOption = {
@@ -25,7 +24,7 @@ const connectDatabase = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("database connected");
-    http.listen(Port, () => {
+    app.listen(Port, () => {
       console.log("Server is running", Port);
     });
   } catch (error) {
