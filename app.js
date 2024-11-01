@@ -5,9 +5,11 @@ import dotenv from "dotenv";
 import initialRoutes from "./routes/index.js";
 import cookieParser from "cookie-parser";
 import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 dotenv.config();
+const __dirname = dirname(__filename);
 const app = express();
-global.__basename = __dirname;
 const Port = process.env.PORT || 8080;
 const corsOption = {
   origin: [process.env.FONTEND_URL, process.env.ADMIN_URL],
