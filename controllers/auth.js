@@ -28,8 +28,8 @@ export const register = async (req, res, next) => {
 export const login = async (req, res, next) => {
   try {
     const { isAdmin = false } = req.body;
-    console.log("Received username:", username);
-    console.log("Received password:", password);
+    console.log("Received username:", req.body.username);
+    console.log("Received password:", req.body.password);
     const user = await User.findOne({ username: req.body.username, isAdmin });
     if (!user) return next(createError(422, "Invalid username or password"));
     const isMatch = await bcrypt.compare(req.body.password, user.password);
