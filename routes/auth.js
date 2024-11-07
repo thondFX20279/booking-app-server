@@ -15,6 +15,10 @@ routes.post(
       .withMessage("Password must be alphanumeric"),
   ],
   (req, res, next) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    console.log("Received username:", username);
+    console.log("Received password:", password);
     const results = validationResult(req);
     if (!results.isEmpty()) return res.status(422).json({ errors: results.array() });
     next();
@@ -54,7 +58,7 @@ routes.post(
   ],
   (req, res, next) => {
     const results = validationResult(req);
-    if (!results.errors.length === 0) return res.status(422).send({ errors: results.errors });
+    if (!results.isEmpty()) return res.status(422).json({ errors: results.array() });
     next();
   },
   ctrls.register
