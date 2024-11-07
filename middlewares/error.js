@@ -6,6 +6,7 @@ export const notFound = (req, res, next) => {
 export const handleError = (error, req, res, next) => {
   const status = error.status || 500;
   const message = error.message || "Internal server error";
+  console.log(error);
   res.status(status).send({
     success: false,
     status: error.status,
