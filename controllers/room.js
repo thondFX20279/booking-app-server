@@ -106,7 +106,6 @@ export const getAvailableRooms = async (req, res, next) => {
       { dateStart: { $gte: new Date(dateStart) }, dateEnd: { $lte: new Date(dateEnd) } },
     ],
   });
-  console.log(transactions);
   const bookedRooms = transactions.map((tr) => tr.room).flat();
   let availableRooms = await Promise.all(
     hotel.rooms.map(async (roomType) => {

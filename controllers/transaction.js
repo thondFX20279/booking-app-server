@@ -7,9 +7,10 @@ export const getTransactions = async (req, res, next) => {
     const transactions = await Transaction.find()
       .limit(Number(limit))
       .sort({ createdAt: -1 })
-      .populate("hotel")
       .populate("user")
+      .populate("hotel")
       .lean();
+
     res.status(200).json(transactions);
   } catch (error) {
     next(error);

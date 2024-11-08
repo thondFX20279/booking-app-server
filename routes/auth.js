@@ -17,8 +17,6 @@ routes.post(
   (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
-    console.log("Received username:", username);
-    console.log("Received password:", password);
     const results = validationResult(req);
     if (!results.isEmpty()) return res.status(422).json({ errors: results.array() });
     next();
@@ -78,8 +76,6 @@ routes.post(
   (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
-    console.log("Received username:", username);
-    console.log("Received password:", password);
     const results = validationResult(req);
     if (!results.isEmpty()) return res.status(422).json({ errors: results.array() });
     next();
