@@ -27,10 +27,27 @@ export const register = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   try {
-    const { isAdmin = false } = req.body;
-    console.log("Received username:", req.body.username);
-    console.log("Received password:", req.body.password);
-    const user = await User.findOne({ username: req.body.username, isAdmin });
+    const user = await User.findOne({ username: req.body.username });
+    if (!user) return next(createError(422, "Invalid username or password"));
+    const isMatch = await bcrypt.compare(req.body.password, user.password);
+    if (!isMatch) return next(createError(422, "Invalid username or password"));
+    const token = generateToken({ id: user._id, isAdmin: user.isAdmin });
+    const { password, ...otherDetails } = user._doc;
+    res.cookie("access_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "none",
+      expires: new Date(Date.now() + 3600000 * 7),
+    });
+    res.status(200).send({ message: "Logged in successfully", user: otherDetails });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const loginAdmin = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ username: req.body.username, isAdmin: true });
     if (!user) return next(createError(422, "Invalid username or password"));
     const isMatch = await bcrypt.compare(req.body.password, user.password);
     if (!isMatch) return next(createError(422, "Invalid username or password"));

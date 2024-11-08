@@ -63,5 +63,28 @@ routes.post(
   },
   ctrls.register
 );
+routes.post(
+  "/login-admin",
+  [
+    body("username").notEmpty().withMessage("Username is required"),
+    body("password")
+      .notEmpty()
+      .withMessage("Password is required")
+      .isLength({ min: 6 })
+      .withMessage("Password must be at least 6 characters")
+      .isAlphanumeric()
+      .withMessage("Password must be alphanumeric"),
+  ],
+  (req, res, next) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    console.log("Received username:", username);
+    console.log("Received password:", password);
+    const results = validationResult(req);
+    if (!results.isEmpty()) return res.status(422).json({ errors: results.array() });
+    next();
+  },
+  ctrls.loginAdmin
+);
 
 export default routes;
