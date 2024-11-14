@@ -107,5 +107,7 @@ All endpoints use a custom error handling middleware. Errors are returned in JSO
 ```json
 {
   "status": 400,
-  "message": "Error message here"
+  "message": "Error message here",
+  "success: true,
+  "stack": error detail
 }
