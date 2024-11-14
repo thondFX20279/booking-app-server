@@ -108,6 +108,6 @@ All endpoints use a custom error handling middleware. Errors are returned in JSO
 {
   "status": 400,
   "message": "Error message here",
-  "success: true,
-  "stack": error detail
+  "success": "true",
+  "stack": "error detail"
 }
