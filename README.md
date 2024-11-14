@@ -35,7 +35,7 @@ This repository contains the backend server for a booking app, built with Node.j
 
 1. Clone this repository:
     ```bash
-    git clone https://github.com/your-username/booking-app-server.git
+    git clone https://github.com/thondFX20279/booking-app-server.git
     ```
 2. Install dependencies:
     ```bash
